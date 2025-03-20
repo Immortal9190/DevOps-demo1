@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Git') {
             steps {
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/rajuhpr/DevOps-demo.git'
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.comhttps://github.com/Immortal9190/DevOps-demo1.git.'
                 echo "Git clone is success! "
             }
         }
@@ -17,8 +17,8 @@ pipeline {
         }   
         stage('Docker-Build') {
             environment {
-                DOCKERHUB_CREDENTIALS = credentials('docker-hub-rajuhp')
-                DOCKER_IMAGE = "rajuhp/simple-devops-image:${BUILD_NUMBER}"
+                DOCKERHUB_CREDENTIALS = credentials('docker-hub-mukesh293')
+                DOCKER_IMAGE = "mukesh293/simple-devops-image:${BUILD_NUMBER}"
 
                 // REGISTRY_CREDENTIALS = credentials('docker-hub-rajuhp')
             }
