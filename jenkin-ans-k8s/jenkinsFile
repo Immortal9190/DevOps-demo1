@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Git') {
             steps {
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/Immortal9190/DevOps-demo1.git.'
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/Immortal9190/DevOps-demo1.git'
                 echo "Git clone is success! "
             }
         }
