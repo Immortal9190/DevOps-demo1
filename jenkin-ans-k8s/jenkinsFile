@@ -12,26 +12,11 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh "cd jenkin-ans-k8s && mvn clean install"
+                sh"""
+                    cd jenkin-ans-k8s
+                    mvn clean install
+                """
             }
         }   
-        stage('Docker-Build') {
-            environment {
-                DOCKERHUB_CREDENTIALS = credentials('docker-hub-mukesh293')
-                DOCKER_IMAGE = "mukesh293/simple-devops-image:${BUILD_NUMBER}"
-
-                // REGISTRY_CREDENTIALS = credentials('docker-hub-rajuhp')
-            }
-            steps {
-                script {
-                    sh 'cd jenkin-ans-k8s && docker build -t mukesh293/simple-devops-image:$BUILD_NUMBER .'
-                    def dockerImage = docker.image("${DOCKER_IMAGE}")
-                    docker.withRegistry('https://index.docker.io/v1/', "docker-hub-mukesh293") {
-                        dockerImage.push()                    
-                }
-
-                }
-            }
-        } 
+      }
     }
-}
